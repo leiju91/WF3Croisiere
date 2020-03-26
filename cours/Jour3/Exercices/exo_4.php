@@ -16,6 +16,10 @@
             - Les éléments de liste <li> contiendront un <a> dirigeant
                 vers chacune des pages
      */
+
+
+require 'functions.php';
+
 $items = [
     'Accueil',
     'Contact',
