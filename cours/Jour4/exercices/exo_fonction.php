@@ -34,8 +34,9 @@ echo 'Nombre de minutes depuis le 15 aout 2010:' . minute($juin44);
 // strtolower('ok');
 // function strtolower($str) {}
 /*
- - Ecrire une fonction qui retourne l'aire d'un rectangle avec les deux dimensions données en paramètre
+ - Ecrire une fonction qui retourne l'aire d'un rectangle avec les deux dimensions données en paramètre.
  - Modifier cette fonction avec le deuxième paramètre facultatif (=0) s'il est à 0 alors ce sera l'aire d'un carré
+
  - Ecrire la fonction getUser qui retournera un tableau avec des données au hasard (nom, prenom, email)
  - Ecrire une seconde fonction getPrenom qui va retourner le prénom envoyé par getUser (appel de getUser dans getPrenom)
  - Ecrire la fonction getInfo avec en paramètre une chaine contenant l'info demandé ("prenom", "nom" etc.) tester si elle existe
@@ -45,3 +46,51 @@ echo 'Nombre de minutes depuis le 15 aout 2010:' . minute($juin44);
  - '<a href="https://oviglo.fr">Lien vers ma page</a>
  - Appeler cette fonction dans le code html ci dessous
 */
+
+function airRectangle($L, $l = 0)
+{
+    if (!$l) {
+        return $L * $L;
+    }
+    return $L * $l;
+}
+
+echo "l'air du rectangle est de :" . airRectangle(10, 0);
+
+// ---------------------------------------------------------------
+
+function getUser()
+{
+    return [
+        'nom' => 'Pikachu',
+        'prenom' => 'Sophie',
+        'email' => 'pikapika_soso@gmail.com',
+    ];
+}
+
+
+var_dump(getUser('Uderzo'));
+
+
+function getPrenom()
+{
+    $user = getUser();
+
+    return $user['prenom'];
+}
+
+echo "prenom: " . getPrenom();
+
+function getInfo(string $info)
+{
+    $user = getUser(); // ûser est un tableau avec les index('prenom', 'nom', 'mail')
+
+    if (isset($user[$info])) {
+        return $user[$info]; // recupere l'élément du tableau en fct de l'index 
+        //qui se trouve dans $info 
+    }
+
+    return "Inconu";
+}
+
+echo  "email: " . getInfo('email');

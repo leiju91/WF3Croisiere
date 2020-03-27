@@ -15,9 +15,8 @@ function getAccountButton(string $nom, string $img)
     return '<section><span>' . $nom . '</span><img src="' . $img . '" alt="avatar"</section>';
 }
 
-//function getListMenu(array $items)
-//{
-//for ($i = 0; $i < $items; ++$i)
-//return '<ul><li><a>' . $items . '</a></li></ul>';
-//}
-
+function getListMenu(array $items)
+{
+    for ($i = 0; $i < $items; ++$i)
+        return '<ul><li><a>' . $i . '</a></li></ul>';
+}
