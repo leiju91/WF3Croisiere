@@ -18,8 +18,9 @@
      */
 
 
-require 'functions.php';
+require_once 'functions.php';
 
+$myMenuArray = ['Homepage', 'Archives', 'Plan du site'];
 $items = [
     'Accueil',
     'Contact',
@@ -29,10 +30,5 @@ $items = [
 // $items ['Accueil' => '/accueil.php'] ...
 ?>
 <nav>
-    <?php echo getListMenu($items); ?>
-    <!-- <ul>
-        <li><a href="">Accueil</a></li>
-        <li>Contact</li>
-
-    </ul> -->
+    <?php echo getListMenu($myMenuArray); ?>
 </nav>

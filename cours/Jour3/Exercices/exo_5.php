@@ -16,9 +16,12 @@ BONUS vous pouvez tester si la balise demandée est valide
 in_array($tags, ['p', 'div'])
 Retourne vrai si $tags est dans un élément du tableau
 */
-?>
-<!-- 
-    <p>Poissons</p>
-    <p>Oiseaux</p>
-    ...
--->
+
+$elements = ['poissons', 'oiseaux', 'dinosaures'];
+
+function elementsInCustomTags($a, $type = 'div')
+{
+    foreach ($a as $b)
+        echo '<' . $type . '>' . $b . '</' . $type . '>';
+}
+elementsInCustomTags($elements);

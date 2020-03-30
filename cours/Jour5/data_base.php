@@ -31,8 +31,31 @@ function getArticles($pdo)
     return $request->fetchAll();
 }
 
-// ecrir nhe fonction qui retournera un seul article a partire de l'id
-// utiliser le limlit en mysql
-function getArticle($id)
+// ecrire une fonction qui retournera un seul article a partir de l'id
+// utiliser le limit en mysql
+
+
+function getArticle($pdo, $id)
 {
+    // methode pas bien !!!
+    // $request = $pdo->query("SELECT * FROM article WHERE id=$id");
+    // var_dump($request->fetchAll());
+    // var_dump($request->fetch());
+
+    // methode bien :)
+    $request = $pdo->prepare('SELECT * FROM article WHERE id=?');
+    $request->bindValue(1, $id, PDO::PARAM_INT); // la fct va tester si id est bien un entier
+    $request->execute(); // execute la requete preparee
+    return $request->fetch(); // retourne l'article 
+
+}
+
+// modifie un article
+function editArticle($pdo, $id, $title, $content)
+{
+    $request = $pdo->prepare('UPDATE article SET title=title, content= content  WHERE id=id');
+    $request->bindValue(':title', $title);
+    $request->bindValue(':content', $content);
+    $request->bindValue(':id', $id, PDO::PARAM_INT);
+    $request->execute();
 }
