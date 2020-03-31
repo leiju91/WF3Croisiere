@@ -1,8 +1,15 @@
-<?php 
+<?php
 require_once('./../src/common.php');
 
 // On récupére la valeur GET "p" qui se trouve dans le lien
-$page = $_GET['p']?? "accueil";
+$page = $_GET['p'] ?? "accueil";
+
+// securité: empeche de cgharger n'importe quel fichier
+// $page = str_replace('/', '', $page);
+// test si $page contient d'autre caractère que des lettres en min et maj
+if (!preg_match('/^[a-zA-Z]*$/', $page)) {
+    $page = 'accueil';
+}
 
 // S'il y a la chaine "admin_" dans cette variable
 if (strpos($page, 'admin_') !== false) {
