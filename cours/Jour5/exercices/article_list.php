@@ -1,7 +1,7 @@
 <?php
 // appel du fichier data_base.php
 
-require_once('data_base.php');
+require_once 'data_base.php';
 $pdo = getPDO();
 //var_dump($pdo->errorInfo());
 
@@ -21,6 +21,8 @@ $articles = getArticles($pdo);
 <body>
     <div class="container">
         <h1>Liste des articles</h1>
+        <a href="article_edit.php" class="btn btn-success">Ajouter une article</a>
+        <hr />
         <!-- table.table>(thead>tr>th*3)+tbody -->
         <table class="table">
             <thead class="thead-dark">
@@ -46,6 +48,9 @@ $articles = getArticles($pdo);
                         <td>
                             <a class="btn btn-secondary" href="article_edit.php?id=<?= $article['id']; ?>">
                                 Modifier
+                            </a>
+                            <a class="btn btn-danger" href="article_delete.php?id=<?= $article['id']; ?>">
+                                Supprimer
                             </a>
                         </td>
                     </tr>
