@@ -5,3 +5,4 @@ $pdo->exec("SET CHARACTER SET utf8"); // Indique à PDO qu'on veut de l'encodage
 
 require_once 'destination.php';
 require_once 'cruise.php';
+require_once 'user.php';

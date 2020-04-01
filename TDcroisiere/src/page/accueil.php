@@ -70,4 +70,4 @@ ob_start(); // Commence à enregistrer le code html
 <?php $content = ob_get_clean(); // Stock tout le code html enregistré dans la variable $content
 ?>
 
-<?php require '../template.php'; ?>
+<?php require '../template.php' ?>
