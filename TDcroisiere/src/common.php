@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 
@@ -15,3 +15,4 @@ function checkAdmin()
 }
 
 require_once('model/database.php');
+require_once('flashmessage.php');

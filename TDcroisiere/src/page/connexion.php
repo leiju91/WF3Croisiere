@@ -19,7 +19,9 @@ if (!empty($_POST)) {
         $result = login($username, $password);
 
         if ('success' == $result['type']) {
+            addFlashMessage('sucess', $result['message']);
             header('Location: index.php');
+            exit();
         }
 
         $errors['global'] = $result['message'];
