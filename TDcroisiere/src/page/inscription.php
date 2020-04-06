@@ -33,7 +33,7 @@ if (!empty($_POST)) {
         $result = addUser($username, $email, $password); // Ajoute l'utilisateur
 
         if ('success' == $result['type']) { // L'utilisateur a bien été ajouté
-            addFlashMessage('sucess', $result['message']);
+            addFlashMessage('success', $result['message']);
             header('Location: index.php');
             exit();
         }
@@ -48,10 +48,15 @@ ob_start();
 <!-- div.card.form-frame>div.card-body>(div.form-group>input:text[name="username"])+(div.form-group>input:email[name="email"])+(div.form-group>input:password[name="password"])+button:submit.btn.btn-primary.btn-block -->
 <div class="card form-frame">
     <div class="card-body">
+
         <?php if (isset($errors['global'])) : ?>
             <div class="alert alert-danger"><?= $errors['global']; ?></div>
         <?php endif; ?>
-        <form action="" method="post" novalidate>
+
+        <!-- Erreur Ajax -->
+        <div class="alert alert-danger" style="display:none;" id="ajax-error"></div>
+
+        <form action="" method="post" id="registration-form" novalidate>
             <div class="form-group">
                 <input class="form-control <?= isset($errors['username']) ? 'is-invalid' : ''; ?>" placeholder="Nom d'utilisateur" type="text" name="username" value="<?= $username; ?>">
                 <?php if (isset($errors['username'])) : ?>
